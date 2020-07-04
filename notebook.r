@@ -1,5 +1,5 @@
 
-## 1. From epidemic to pandemic
+## 1. From epidemic to pandemic visualizing COVID19 
 
 # Load the readr, ggplot2, and dplyr packages
 library(readr)
@@ -13,6 +13,7 @@ cols(
   cum_cases = col_double()
 )
 # change the format of the rows
+
 confirmed_cases_worldwide <- as.Date("01-22-2020")
 
 # add names "date" and "number" to dataset
@@ -20,3 +21,10 @@ confirmed_cases_worldwide <- as.Date("01-22-2020")
 
 # See the result
 confirmed_cases_worldwide
+
+# Viewing the corona virus cases using a line graph
+# Draw a line plot of cumulative cases vs. date
+# Label the y-axis
+ggplot(confirmed_cases_worldwide, aes(x=date,y=cum_cases)) +
+  geom_line() +
+  ylab("Cumulative confirmed cases")
