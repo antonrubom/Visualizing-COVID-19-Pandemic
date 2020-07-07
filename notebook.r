@@ -7,7 +7,7 @@ library(ggplot2)
 library(dplyr)
 
 # Read datasets/confirmed_cases_worldwide.csv into confirmed_cases_worldwide
-confirmed_cases_worldwide <- read_csv("datasets/confirmed_cases_worldwide.csv")
+confirmed_cases_worldwide <- read_csv("confirmed_cases_worldwide.csv")
 cols(
   date = col_date(format = ""),
   cum_cases = col_double()
