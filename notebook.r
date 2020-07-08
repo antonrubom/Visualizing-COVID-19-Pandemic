@@ -42,4 +42,12 @@ plt_cum_confirmed_cases_china_vs_world <- ggplot(confirmed_cases_china_vs_world)
   ylab("Cumulative confirmed cases")
 
 # See the plot
-plt_cum_confirmed_cases_china_vs_world
+plt_cum_confirmed_cases_china_vs_worldwho_events <-
+ tribble( ~ date, ~ event,
+  2020-01-30, Global healthnemergency declared, 
+  2020-03-11, Pandemicndeclared, 
+  2020-02-13, China reportingnchange ) %>% mutate(date = as.Date(date)) 
+
+# Using who_events, add vertical dashed lines with an xintercept at date 
+# and text at date, labeled by event, and at 100000 on the y-axis
+plt_cum_confirmed_cases_china_vs_world + geom_vline(aes(xintercept=date), who_events, lty=dashed) + geom_text(aes(x=date,label=event),who_events,y=100000)
