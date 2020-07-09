@@ -51,3 +51,15 @@ plt_cum_confirmed_cases_china_vs_worldwho_events <-
 # Using who_events, add vertical dashed lines with an xintercept at date 
 # and text at date, labeled by event, and at 100000 on the y-axis
 plt_cum_confirmed_cases_china_vs_world + geom_vline(aes(xintercept=date), who_events, lty=dashed) + geom_text(aes(x=date,label=event),who_events,y=100000)
+
+## 5.
+# Filter for China, from Feb 15
+china_after_feb15 <- confirmed_cases_china_vs_world %>%
+  filter(is_china=="China", date>="2020-02-15") 
+
+# Using china_after_feb15, draw a line plot cum_cases vs. date
+# Add a smooth trend line using linear regression, no error bars
+ggplot(china_after_feb15, aes(x=date,y=cum_cases)) +
+geom_line()+
+geom_smooth(method="lm", se=FALSE) +
+ylab("Cumulative confirmed cases")
