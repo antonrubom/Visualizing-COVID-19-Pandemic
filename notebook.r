@@ -66,4 +66,17 @@ ylab("Cumulative confirmed cases")
 # Filter confirmed_cases_china_vs_world for not China
 
 #Adding 6th Analysis
-# Filter confirmed_cases_china_vs_world for not China not_china <- confirmed_cases_china_vs_world %>% filter(is_china ==Not China) # Using not_china, draw a line plot cum_cases vs. date # Add a smooth trend line using linear regression, no error bars plt_not_china_trend_lin <- ggplot(not_china, aes(x=date,y=cum_cases)) + geom_line() + geom_smooth(method=lm, se=FALSE) + ylab(Cumulative confirmed cases) # See the result plt_not_china_trend_lin
+# Filter confirmed_cases_china_vs_world for not China 
+not_china <- confirmed_cases_china_vs_world %>% filter(is_china ==Not China) # Using not_china, draw a line plot cum_cases vs. date # Add a smooth trend line using linear regression, no error bars plt_not_china_trend_lin <- ggplot(not_china, aes(x=date,y=cum_cases)) + geom_line() + geom_smooth(method=lm, se=FALSE) + ylab(Cumulative confirmed cases) # See the result plt_not_china_trend_lin
+#adding 7th analysis
+# Modify the plot to use a logarithmic scale on the y-axis
+plt_not_china_trend_lin + scale_y_log10()
+
+#Adding 8th Analysis
+# Run this to get the data for each country 
+confirmed_cases_by_country <- read_csv("datasets/confirmed_cases_by_country.csv") 
+glimpse(confirmed_cases_by_country) 
+# Group by country, summarize to calculate total cases, find the top 7 
+top_countries_by_total_cases <- confirmed_cases_by_country %>% group_by(country) %>% summarize(total_cases = max(cum_cases)) %>% top_n(7) 
+# See the result 
+top_countries_by_total_cases
