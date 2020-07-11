@@ -5,3 +5,4 @@ Using R programming language to visuallize the data.
 
 ##The documents include visualization of the worldwide infection rates of the COVID19 pandemic. 
 
+#Project complete (comment added with terminal)
