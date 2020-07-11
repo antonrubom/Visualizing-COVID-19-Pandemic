@@ -79,4 +79,11 @@ glimpse(confirmed_cases_by_country)
 # Group by country, summarize to calculate total cases, find the top 7 
 top_countries_by_total_cases <- confirmed_cases_by_country %>% group_by(country) %>% summarize(total_cases = max(cum_cases)) %>% top_n(7) 
 # See the result 
-top_countries_by_total_cases
+top_countries_by_total_cases# Run this to get the data for the top 7 countries
+confirmed_cases_top7_outside_china <- read_csv(datasets/confirmed_cases_top7_outside_china.csv)
+# show us the confirmed cases outside of china
+glimpse(confirmed_cases_top7_outside_china)
+# Using confirmed_cases_top7_outside_china, draw a line plot of
+# cum_cases vs. date, grouped and colored by country
+ggplot(confirmed_cases_top7_outside_china, aes(x=date, y=cum_cases,color=country,group=country)) + geom_line() + ylab(Cumulative confirmed cases)
+#COVID19 Analysis project complete 
